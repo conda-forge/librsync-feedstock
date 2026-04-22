@@ -1,6 +1,5 @@
-
 {% set name = "librsync" %}
-{% set version = "2.3.1" %}
+{% set version = "2.3.2" %}
 
 package:
   name: {{ name|lower }}
@@ -8,13 +7,13 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: dbd7eb643665691bdf4009174461463737b19b4814b789baad62914cabfe4569
+  sha256: ef8ce23df38d5076d25510baa2cabedffbe0af460d887d86c2413a1c2b0c676f
 
 
 build:
   skip: true  # [win]
   number: 0
-  script: "cmake -DCMAKE_INSTALL_PREFIX=$PREFIX -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON . ; make install;"
+  script: cmake -DCMAKE_INSTALL_PREFIX=$PREFIX -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON . ; make install;
 
 requirements:
   build:
@@ -39,13 +38,13 @@ test:
     - netint_test
     - rollsum_test
     - sumset_test
-    
+
 
 about:
   home: https://github.com/librsync/librsync
   license: LGPL-2.1-only
   license_file: COPYING
-  summary: 'A library for calculating and applying network deltas'
+  summary: A library for calculating and applying network deltas
   description: |
     librsync is a library for calculating and applying network deltas, with an interface designed to
     ease integration into diverse network applications.
